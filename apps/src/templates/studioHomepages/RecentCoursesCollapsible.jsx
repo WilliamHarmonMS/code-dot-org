@@ -3,19 +3,13 @@ import CollapsibleSection from './CollapsibleSection';
 import CourseCard from './CourseCard';
 import SetUpMessage from './SetUpMessage';
 import i18n from "@cdo/locale";
+import shapes from './shapes';
 
 const RecentCoursesCollapsible = React.createClass({
   propTypes: {
-    courses: PropTypes.arrayOf(
-      PropTypes.shape({
-        courseName: React.PropTypes.string.isRequired,
-        description: React.PropTypes.string.isRequired,
-        image: React.PropTypes.string.isRequired,
-        assignedSections: React.PropTypes.array.isRequired
-      })
-    ),
-    showAllCoursesLink: React.PropTypes.bool.isRequired,
-    isTeacher: React.PropTypes.bool.isRequired
+    courses: shapes.courses,
+    showAllCoursesLink: PropTypes.bool.isRequired,
+    isTeacher: PropTypes.bool.isRequired
   },
 
   render() {
@@ -33,7 +27,7 @@ const RecentCoursesCollapsible = React.createClass({
             {courses.map((course, index) =>
               <CourseCard
                 key={index}
-                courseName={course.courseName}
+                courseName={course.name}
                 description={course.description}
                 image={course.image}
                 link={course.link}
